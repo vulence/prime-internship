@@ -8,7 +8,7 @@ import common.Type;
 public class Manager extends Approver {
     @Override
     public void approve(int id, double cost, Type type) {
-        if (canApprove(id, cost, type)) {
+    	if (canApprove(cost, type)) {
             System.out.println("Manager approved purchase with id " + id + " that costs " + cost);
             return;
         }
@@ -18,27 +18,20 @@ public class Manager extends Approver {
     }
 
     @Override
-    protected boolean canApprove(int id, double cost, Type type) {
-        boolean result = false;
-
-        if (type == Type.CONSUMABLES && cost <= 300) {
-            result = true;
-            return result;
-        } else if (type == Type.CLERICAL && cost <= 500) {
-            result = false;
-            return result;
-        } else if (type == Type.GADGETS && cost <= 1000) {
-            result = true;
-            return result;
-        } else if (type == Type.GAMING && cost <= 2000) {
-            result = true;
-            return result;
-        } else if (type == Type.PC && cost <= 5000) {
-            result = true;
-            return result;
-        } else {
-            result = false;
-            return result;
-        }
+    protected boolean canApprove(double cost, Type type) {
+    	switch (type) {
+    	case CONSUMABLES:
+    		return cost <= 300 ? true : false;
+    	case CLERICAL:
+    		return cost <= 500 ? true : false;
+    	case GADGETS:
+    		return cost <= 1000 ? true : false;
+    	case GAMING:
+    		return cost <= 3000 ? true : false;
+    	case PC:
+    		return cost <= 5000 ? true : false;
+    	default:
+    		return false;
+    	}
     }
 }
