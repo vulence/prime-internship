@@ -2,9 +2,6 @@ package handlers;
 
 import common.Type;
 
-/**
- * //TODO - Implement approval implementation for President level
- */
 public class President extends Approver{
     @Override
     public void approve(int id, double cost, Type type) {
@@ -19,6 +16,8 @@ public class President extends Approver{
 
     @Override
     protected boolean canApprove(double cost, Type type) {
+    	if (cost > 8000) return false;
+    	
     	switch (type) {
     	case CONSUMABLES:
     		return cost <= 1000 ? true : false;

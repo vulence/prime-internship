@@ -2,9 +2,6 @@ package handlers;
 
 import common.Type;
 
-/**
- * //TODO - If needed, validate logic and if possible optimize code.
- */
 public class Director extends Approver {
 
     @Override
@@ -20,6 +17,8 @@ public class Director extends Approver {
 
     @Override
     protected boolean canApprove(double cost, Type type) {
+    	if (cost > 6000) return false;
+    	
     	switch (type) {
     	case CONSUMABLES:
     		return cost <= 500 ? true : false;

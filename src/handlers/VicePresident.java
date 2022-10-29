@@ -2,10 +2,6 @@ package handlers;
 
 import common.Type;
 
-
-/**
- * //TODO - Implement approval implementation for VicePresident level
- */
 public class VicePresident extends Approver{
     @Override
     public void approve(int id, double cost, Type type) {
@@ -20,6 +16,8 @@ public class VicePresident extends Approver{
 
     @Override
     protected boolean canApprove(double cost, Type type) {
+    	if (cost > 6500) return false;
+    	
     	switch (type) {
     	case CONSUMABLES:
     		return cost <= 700 ? true : false;

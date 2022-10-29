@@ -17,5 +17,6 @@ public class PurchaseApprovalExecutor {
         manager.approve(2, 5000, Type.PC);
         manager.approve(3, 5000, Type.PC);
         manager.approve(4, 2000, Type.CLERICAL);
+        manager.approve(5, 6000, Type.PC);
     }
 }
